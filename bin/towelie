@@ -1,0 +1,35 @@
+#!/usr/bin/env node
+var fs = require('fs'),
+    exec = require('child_process').exec,
+    join = require('path').join,
+    grunt = require('grunt'),
+    colors = require('colors'),
+    _ = require('underscore'),
+    compiled = _.template( fs.readFileSync( join(__dirname, 'help.txt'), 'utf8' ));
+
+// load towelie custom tasks
+grunt.npmTasks(join(__dirname, '../'));
+
+// command line arguments
+var arguments = process.argv.splice(2).join(' ').trim('');
+
+// custom help, on `h5bp help`
+if(/^help/.test(arguments)) {
+  if(/^help$/.test(arguments)) {
+    return console.log(compiled());
+  }
+  //cli.tasks = cmds.join(':');
+}
+
+// Add JAM commands to Towelie
+if(/^install|^remove|^search|^ls|^upgrade/.test(arguments)) {
+  exec('jam ' + arguments, function(err, out, code) {
+    if(err) throw err;
+    process.stdout.write(out);
+    process.exit(code);
+    grunt.cli();
+  });
+}
+else {
+  grunt.cli();
+}
