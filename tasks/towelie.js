@@ -5,6 +5,7 @@ module.exports = function(grunt) {
   var grunt_plugins = [
     "grunt-contrib/node_modules/grunt-contrib-coffee",
     "grunt-contrib/node_modules/grunt-contrib-clean",
+    "grunt-contrib/node_modules/grunt-contrib-copy",
     "grunt-jam",
     "grunt-requirejs",
     "grunt-testem",
