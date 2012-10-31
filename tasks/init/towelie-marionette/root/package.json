@@ -1,0 +1,38 @@
+{
+  "name": "TowelieApp3",
+  "description": "The best project ever.",
+  "version": "0.1.0",
+  "homepage": "https://github.com/eric.clifford/TowelieApp3",
+  "author": {
+    "name": "Eric Clifford",
+    "email": "ericgclifford@gmail.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eric.clifford/TowelieApp3.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eric.clifford/TowelieApp3/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/eric.clifford/TowelieApp3/blob/master/LICENSE-MIT"
+    }
+  ],
+  "main": "lib/TowelieApp3",
+  "engines": {
+    "node": ">= 0.6.0"
+  },
+  "scripts": {
+    "test": "grunt test"
+  },
+  "devDependencies": {
+    "grunt": "~0.3.17"
+  },
+  "keywords": [],
+  "jam": {
+    "packageDir": "app/scripts/vendor",
+    "baseUrl": "app"
+  }
+}

@@ -9,7 +9,8 @@ module.exports = function(grunt) {
     "grunt-jam",
     "grunt-requirejs",
     "grunt-testem",
-    "grunt-sass"
+    "grunt-sass",
+    "grunt-compass"
   ];
 
    // Let's load all the pass through tasks 

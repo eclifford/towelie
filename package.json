@@ -1,7 +1,7 @@
 {
   "name": "towelie",
   "description": "Never leave home without a Towel",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "keywords": [],
   "author": {
     "name": "Eric Clifford",
@@ -32,7 +32,8 @@
     "grunt-sass": "~0.2.4",
     "underscore": "~1.4.2",
     "open": "0.0.2",
-    "colors": "~0.6.0-1"
+    "colors": "~0.6.0-1",
+    "grunt-compass": "~0.3.7"
   },
   "readme": "Towelie is a taskbased wrapper built on top of Grunt"
 }
