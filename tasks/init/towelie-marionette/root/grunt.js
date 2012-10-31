@@ -112,23 +112,22 @@ module.exports = function( grunt ) {
     testem: { 
       options: {
         files: [
-          "<%= towelie.paths.test %>/index.html"
+          "test/index.html"
         ],
         routes: {
-          "/scripts/vendor": "<%= towelie.paths.dev %>/scripts/vendor",
-          "/scripts": "<%= towelie.paths.staging %>/scripts",
-          "/styles": "<%= towelie.paths.staging %>/styles",
-          "/specs": "<%= towelie.paths.staging %>/specs",
-          "/clientlibs": "<%= towelie.paths.dev %>/clientlibs",
-          "/templates": "<%= towelie.paths.dev %>/templates"
+          "/scripts/vendor": "app/scripts/vendor",
+          "/scripts": "temp/scripts",
+          "/styles": "temp/styles",
+          "/specs": "temp/specs",
+          "/templates": "app/templates"
         },
         browsers: [
           "phantomjs"
         ],
         src_files: [
-          "<%= towelie.paths.dev %>/templates/**/*.tmpl",
-          "<%= towelie.paths.staging %>/scripts/**/*.js",
-          "<%= towelie.paths.test %>/specs/**/*.coffee"
+          "app/templates/**/*.tmpl",
+          "temp/scripts/**/*.js",
+          "test/specs/**/*.coffee"
         ]
       }
     },
