@@ -13,30 +13,23 @@ grunt.npmTasks(join(__dirname, '../'));
 // command line arguments
 var arguments = process.argv.splice(2).join(' ').trim('');
 
-// custom help, on `h5bp help`
-if(/^help/.test(arguments)) {
-  if(/^help$/.test(arguments)) {
-    return console.log(compiled());
-  }
-  //cli.tasks = cmds.join(':');
-}
-
-// Capture default towelie init command
-if(/init/.test(arguments)) {
-  exec('towelie init:marionette', function(err, out, code) {
+// Add JAM commands to Towelie
+if(/^install|^remove|^search|^ls|^upgrade/.test(arguments)) {
+  exec('jam ' + arguments, function(err, out, code) {
     if(err) throw err;
     process.stdout.write(out);
     process.exit(code);
     grunt.cli();
   });
 }
-else {
-  grunt.cli();
+// Help commands
+else if(/^help/.test(arguments)) {
+    return console.log(compiled());
+  //cli.tasks = cmds.join(':');
 }
-
-// Add JAM commands to Towelie
-if(/^install|^remove|^search|^ls|^upgrade/.test(arguments)) {
-  exec('jam ' + arguments, function(err, out, code) {
+// Scaffolding commands
+else if(/init/.test(arguments)) {
+  exec('towelie init:marionette', function(err, out, code) {
     if(err) throw err;
     process.stdout.write(out);
     process.exit(code);
