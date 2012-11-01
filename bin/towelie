@@ -21,6 +21,19 @@ if(/^help/.test(arguments)) {
   //cli.tasks = cmds.join(':');
 }
 
+// Capture default towelie init command
+if(/init/.test(arguments)) {
+  exec('towelie init:marionette', function(err, out, code) {
+    if(err) throw err;
+    process.stdout.write(out);
+    process.exit(code);
+    grunt.cli();
+  });
+}
+else {
+  grunt.cli();
+}
+
 // Add JAM commands to Towelie
 if(/^install|^remove|^search|^ls|^upgrade/.test(arguments)) {
   exec('jam ' + arguments, function(err, out, code) {
