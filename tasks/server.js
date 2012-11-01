@@ -14,6 +14,8 @@ module.exports = function(grunt) {
       //   keepalive: true
       // });
 
+      var settings = grunt.config('towelie.server');
+
       // Connect requires the base path to be absolute.
       var base = path.resolve('app');
 
@@ -34,10 +36,10 @@ module.exports = function(grunt) {
       }
 
       // Start server.
-      grunt.log.writeln('Starting static web server on ' + 'localhost' + ':' + '8000' + '.');
-      connect.apply(null, middleware).listen('8000', 'localhost');
+      grunt.log.writeln('Starting static web server on ' + settings.hostname + ':' + settings.port + '.');
+      connect.apply(null, middleware).listen(settings.port, settings.hostname);
 
-      open( 'http://' + 'localhost' + ':' + '8000' );
+      open( 'http://' + settings.hostname + ':' + settings.port );
         // if ( opts.open ) {
           
         // }
