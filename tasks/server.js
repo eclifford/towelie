@@ -37,7 +37,7 @@ module.exports = function(grunt) {
 
       // Start server.
       grunt.log.writeln('Starting static web server on ' + settings.hostname + ':' + settings.port + '.');
-      connect.apply(null, middleware).listen(settings.port, settings.hostname);
+      connect.apply(null, middleware).listen(settings.port);
 
       open( 'http://' + settings.hostname + ':' + settings.port );
         // if ( opts.open ) {
