@@ -20,8 +20,23 @@ Towelie is an opinonated modularized development enviroment build around [GruntJ
 
 ## Install dependencies
 * [Compass](http://compass-style.org/)
+
+```bash
+gem update --system
+gem install compass
+```
+
 * [Node](http://nodejs.org/)
+
+```bash
+brew update && brew install node   
+```
+
 * [PhantomJS](http://phantomjs.org/)
+
+```bash
+brew update && brew install phantomjs
+```
 
 ## Install Towelie
 

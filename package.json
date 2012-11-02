@@ -1,7 +1,7 @@
 {
   "name": "towelie",
   "description": "Never leave home without a Towel",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "keywords": [],
   "author": {
     "name": "Eric Clifford",
@@ -18,6 +18,9 @@
   "main": "towelie.js",
   "bin": {
     "towelie": "bin/towelie"
+  },
+  "engines": {
+    "node": ">= 0.8.0"
   },
   "dependencies": {
     "testem": "~0.2.17",

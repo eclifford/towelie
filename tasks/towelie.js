@@ -8,7 +8,6 @@ module.exports = function(grunt) {
     "grunt-contrib-copy",
     "grunt-contrib-requirejs",
     "grunt-testem",
-    "grunt-sass",
     "grunt-compass"
   ];
 
