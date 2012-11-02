@@ -6,7 +6,7 @@
     "email": "{%= author_email %}"
   },
   "jam": {
-    "packageDir": "app/scripts/vendor",
-    "baseUrl": "app"
+    "packageDir": "{%= app_dir %}/scripts/vendor",
+    "baseUrl": "{%= app_dir %}"
   }
 }

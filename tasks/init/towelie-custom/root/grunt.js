@@ -1,9 +1,9 @@
 module.exports = function( grunt ) {
 
   // Towelie Tasks
-  grunt.registerTask('build', 'clean:dist coffee compass copy:dist requirejs:js requirejs:css');
-  grunt.registerTask('default', 'clean:temp coffee compass server watch');
-  grunt.registerTask('test', 'clean:temp coffee compass testem');
+  grunt.registerTask('build', 'clean:dist {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} copy:dist {%= require ? "requirejs:js requirejs:css" : "" %}');
+  grunt.registerTask('default', 'clean:temp {%= coffee ? "coffee" : "" %} compass server watch');
+  grunt.registerTask('test', 'clean:temp {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} testem');
 
   //
   // Grunt configuration:
@@ -17,10 +17,10 @@ module.exports = function( grunt ) {
     //
     towelie: {
       paths: {
-        staging: "temp",
-        production: "dist",
-        dev: "app",
-        test: "test"
+        staging: "{%= staging_dir %}",
+        production: "{%= production_dir %}",
+        dev: "{%= app_dir %}",
+        test: "{%= test_dir %}"
       },
       server: {
         hostname: "localhost",

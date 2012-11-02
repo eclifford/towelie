@@ -6,15 +6,7 @@ module.exports = function(grunt) {
   grunt.renameTask('server', 'grunt-server');
 
   grunt.registerTask('server', 'Launch a preview server', function() { 
-   // Merge task-specific options with these defaults.
-      // var options = this.data.options({
-      //   port: 8000,
-      //   hostname: 'localhost',
-      //   base: '.',
-      //   keepalive: true
-      // });
-
-      var settings = grunt.config('towelie.server');
+      var settings = grunt.config('towelie');
 
       // Connect requires the base path to be absolute.
       var base = path.resolve('app');
@@ -22,8 +14,8 @@ module.exports = function(grunt) {
       // Sweet, sweet middleware.
       var middleware = [
         // Serve static files.
-        connect.static('app'),
-        connect.static('temp'),
+        connect.static(settings.paths.dev),
+        connect.static(settings.paths.staging),
         // Make empty directories browsable. (overkill?)
         connect.directory('app')
       ];
@@ -36,26 +28,11 @@ module.exports = function(grunt) {
       }
 
       // Start server.
-      grunt.log.writeln('Starting static web server on ' + settings.hostname + ':' + settings.port + '.');
-      connect.apply(null, middleware).listen(settings.port);
-
-      open( 'http://' + settings.hostname + ':' + settings.port );
-        // if ( opts.open ) {
-          
-        // }
-
-      // // So many people expect this task to keep alive that I'm adding an option
-      // // for it. Running the task explicitly as grunt:keepalive will override any
-      // // value stored in the config. Have fun, people.
-      // if (this.flags.keepalive || true) {
-      //   // This is now an async task. Since we don't store a handle to the "done"
-      //   // function, this task will never, ever, ever terminate. Have fun!
-      //   this.async();
-      //   grunt.log.write('Waiting forever...');
-      // }
+      grunt.log.writeln('Starting static web server on ' + settings.server.hostname + ':' + settings.server.port + '.');
+      connect.apply(null, middleware).listen(settings.server.port);
   });
 
-  // grunt.registerTask('open-browser', function() {
-  //   open('http://' + grunt.config('server.hostname'))
-  // });
+  grunt.registerTask('open-browser', function() {
+    open('http://' + grunt.config('towelie.server.hostname') + ':' + grunt.config('towelie.server.port'))
+  });
 }

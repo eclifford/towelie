@@ -1,0 +1,6 @@
+{% if(require) { %}
+define [], () ->
+{% } else { %}
+{% } %}
+
+
