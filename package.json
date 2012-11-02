@@ -1,7 +1,7 @@
 {
   "name": "towelie",
   "description": "Never leave home without a Towel",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "keywords": [],
   "author": {
     "name": "Eric Clifford",
@@ -22,13 +22,14 @@
   "engines": {
     "node": ">= 0.8.0"
   },
+  "scripts": {
+    "preinstall": "npm i -g testem && npm i -g jamjs"
+  },
   "dependencies": {
-    "testem": "~0.2.17",
     "jamjs": "~0.2.11",
     "connect": "~2.6.0",
-    "grunt-testem": "~0.1.4",
+    "grunt-testem": "~0.1.5",
     "grunt": "~0.3.17",
-    "grunt-jam": "~0.3.0",
     "grunt-requirejs": "~0.2.14",
     "grunt-shell": "~0.1.3",
     "underscore": "~1.4.2",

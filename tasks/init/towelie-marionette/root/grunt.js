@@ -98,7 +98,6 @@ module.exports = function( grunt ) {
         linecomments: true,
         forcecompile: true,
         require: [
-          'susy'
         ],
         debugsass: true,
         images: 'app/images',
@@ -137,17 +136,21 @@ module.exports = function( grunt ) {
     //
     requirejs: {
       js: {
-        optimize: 'none',
-        baseUrl: './',
-        wrap: true,
-        name: 'scripts/main',
-        out: '../<%= towelie.paths.production %>/scripts/app.js',
-        mainConfigFile: 'scripts/main.js'
+        options: {
+          optimize: 'none',
+          baseUrl: './',
+          wrap: true,
+          name: 'scripts/main',
+          out: '../<%= towelie.paths.production %>/scripts/app.js',
+          mainConfigFile: 'scripts/main.js'
+        }
       },
       css: {
-        baseUrl: './',
-        cssIn: "styles/main.css",
-        out: "../<%= towelie.paths.production %>/styles/app.css"
+        options: {
+          baseUrl: './',
+          cssIn: "styles/main.css",
+          out: "../<%= towelie.paths.production %>/styles/app.css"
+        }
       }
     },
     //
