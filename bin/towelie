@@ -27,15 +27,6 @@ else if(/^help/.test(arguments)) {
     return console.log(compiled());
   //cli.tasks = cmds.join(':');
 }
-// Scaffolding commands
-else if(/init/.test(arguments)) {
-  exec('towelie init:marionette', function(err, out, code) {
-    if(err) throw err;
-    process.stdout.write(out);
-    process.exit(code);
-    grunt.cli();
-  });
-}
 else {
   grunt.cli();
 }
