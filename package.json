@@ -1,7 +1,7 @@
 {
   "name": "towelie",
   "description": "Never leave home without a Towel",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "keywords": [],
   "author": {
     "name": "Eric Clifford",
@@ -20,7 +20,6 @@
     "towelie": "bin/towelie"
   },
   "dependencies": {
-    "grunt-contrib": "~0.3.0",
     "testem": "~0.2.17",
     "jamjs": "~0.2.11",
     "connect": "~2.6.0",
@@ -33,7 +32,11 @@
     "underscore": "~1.4.2",
     "open": "0.0.2",
     "colors": "~0.6.0-1",
-    "grunt-compass": "~0.3.7"
+    "grunt-compass": "~0.3.7",
+    "grunt-contrib-coffee": "~0.3.2",
+    "grunt-contrib-clean": "~0.3.1",
+    "grunt-contrib-copy": "~0.3.1",
+    "grunt-contrib-requirejs": "~0.3.3"
   },
   "readme": "Towelie is a taskbased wrapper built on top of Grunt"
 }

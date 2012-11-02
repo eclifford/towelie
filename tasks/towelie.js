@@ -3,10 +3,10 @@ var join  = require('path').join;
 
 module.exports = function(grunt) {
   var grunt_plugins = [
-    "grunt-contrib/node_modules/grunt-contrib-coffee",
-    "grunt-contrib/node_modules/grunt-contrib-clean",
-    "grunt-contrib/node_modules/grunt-contrib-copy",
-    "grunt-contrib/node_modules/grunt-contrib-requirejs",
+    "grunt-contrib-coffee",
+    "grunt-contrib-clean",
+    "grunt-contrib-copy",
+    "grunt-contrib-requirejs",
     "grunt-testem",
     "grunt-sass",
     "grunt-compass"
