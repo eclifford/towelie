@@ -15,7 +15,7 @@ var arguments = process.argv.splice(2).join(' ').trim('');
 
 // Add JAM commands to Towelie
 if(/^install|^remove|^search|^ls|^upgrade/.test(arguments)) {
-  exec('jam ' + arguments, function(err, out, code) {
+  exec(__dirname + '/../node_modules/.bin/jam ' + arguments, function(err, out, code) {
     if(err) throw err;
     process.stdout.write(out);
     process.exit(code);
