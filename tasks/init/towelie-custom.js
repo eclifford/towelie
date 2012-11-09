@@ -68,6 +68,11 @@ exports.template = function(grunt, init, done) {
       name: 'bootstrap',
       message: 'Use Twitter Bootstrap?',
       default: 'Y/n',
+    },
+    {
+      name: 'jasmine',
+      message: 'Use Jasmine (fallback is Mocha)',
+      default: 'Y/n',
     }
   ], function(err, props) {
     props.coffee = /y/i.test(props.coffee);
