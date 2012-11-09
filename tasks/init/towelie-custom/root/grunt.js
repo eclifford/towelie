@@ -2,7 +2,7 @@ module.exports = function( grunt ) {
 
   // Towelie Tasks
   grunt.registerTask('build', 'clean:dist {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} copy:dist {%= require ? "requirejs:js requirejs:css" : "" %}');
-  grunt.registerTask('default', 'clean:temp {%= coffee ? "coffee" : "" %} compass server watch');
+  grunt.registerTask('default', 'clean:temp {%= coffee ? "coffee" : "" %} compass connect open-browser watch');
   grunt.registerTask('test', 'clean:temp {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} testem');
 
   //
@@ -24,28 +24,28 @@ module.exports = function( grunt ) {
       },
       server: {
         hostname: "localhost",
-        port: "8000"
+        port: "3501"
       }
     },
     //
     // grunt-contrib-connect
-    // https://github.com/gruntjs/grunt-contrib-connect
+    // http://github.com/gruntjs/grunt-contrib-connect
     //
-    // connect: {
-    //   options: {
-    //     // Example usage
-    //     middleware: function(connect, options) {
-    //       // Return array of whatever middlewares you want
-    //       return [
-    //         connect.static('app/scripts', '/scripts'),
-    //         connect.static('app/styles', 'styles')
-    //       ];
-    //     }
-    //   }
-    // },
+    connect: {
+      port: '<config:towelie.server.port>',
+      hostname: '<config:towelie.server.hostname>',
+      dev: '<config:towelie.paths.dev>',
+      staging: '<config:towelie.paths.staging>',
+      middleware: function(connect, options) {
+        return [
+          connect.static(options.dev),
+          connect.static(options.staging),
+          connect.directory(options.dev)
+        ];
+      }
+    },
     //
-    // grunt-contrib-watch
-    // https://github.com/gruntjs/grunt-contrib-watch
+    // grunt-watch
     //
     watch: {
       {% if (coffee) { %}
@@ -102,14 +102,14 @@ module.exports = function( grunt ) {
     //
     compass: {
       dev: {
-        src: "app/styles",
-        dest: "temp/styles",
+        src: '<%= towelie.paths.dev %>/styles',
+        dest: '<%= towelie.paths.staging %>/styles',
         linecomments: true,
         forcecompile: true,
         require: [
         ],
         debugsass: true,
-        images: 'app/images',
+        images: '<%= towelie.paths.dev %>/images',
         relativeassets: true
       }
     },
@@ -130,7 +130,10 @@ module.exports = function( grunt ) {
           "/specs": "temp/specs",
           "/templates": "app/templates"
         },
-        browsers: [
+        launch_in_ci: [
+          "phantomjs"
+        ],
+        launch_in_dev: [
           "phantomjs"
         ],
         src_files: [

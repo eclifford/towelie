@@ -6,7 +6,7 @@ var jam = {
 };
 
 if (typeof require !== "undefined" && require.config) {
-    require.config({baseUrl: "/", packages: jam.packages, shim: jam.shim});
+    require.config({packages: jam.packages, shim: jam.shim});
 }
 else {
     var require = {packages: jam.packages, shim: jam.shim};

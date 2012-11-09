@@ -6,18 +6,17 @@
 <script src="/testem/mocha.js"></script>
 <script src="/testem.js"></script>
 <script>mocha.setup('bdd')</script>
- <script src="lib/chai.js"></script>
-  <script src="lib/sinon.js"></script>
-  <script>
-    expect = chai.expect
-  </script>
-  <script src="../scripts/vendor/require.js"></script>
-  <script src="../scripts/vendor/require.config.js"></script>
+<script src="lib/chai.js"></script>
+<script src="lib/sinon.js"></script>
+<script>expect = chai.expect</script>
+<script>var require = {baseUrl: "/"};</script>
+<script src="/scripts/vendor/require.js"></script>
+<script src="/scripts/vendor/require.config.js"></script>
 <body>
 <div id="mocha"></div>
 <script>
   require([
-    '../specs/example.spec'
+    'specs/example.spec'
   ], function(require) {
     mocha.run();
   });
