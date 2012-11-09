@@ -2,7 +2,7 @@
 
 # Towelie Framework
 
-Towelie is an opinonated modularized development enviroment build around [GruntJS](http://gruntjs.com). On the surface it looks very similar to [Yeoman](http://yeoman.io)(intentionally) because [Yeoman](http://yeoman.io) is pretty awesome. Where Towelie differs in regards to [Yeoman](http://yeoman.io) is that Towelie opts to more closely align itself with Grunt and simply serves as an interface to the underlieing Grunt tasks. In Towelie all grunt tasks are fully configurable by the projects local grunt.js file.
+Towelie is an opinonated modularized development enviroment built around [GruntJS](http://gruntjs.com). On the surface it looks very similar to [Yeoman](http://yeoman.io)(intentionally) because [Yeoman](http://yeoman.io) is pretty awesome. Where Towelie differs in regards to [Yeoman](http://yeoman.io) is that Towelie opts to more closely align itself with Grunt and simply serves as an interface to the underlieing Grunt tasks. In Towelie all grunt tasks are fully configurable by the projects local grunt.js file.
 
 # Integrated Features
 * [GruntJS](http://gruntjs.com/)
@@ -19,23 +19,43 @@ Towelie is an opinonated modularized development enviroment build around [GruntJ
 # Quickstart
 
 ## Install dependencies
-* [Compass](http://compass-style.org/)
+
+There are many ways to install the following dependencies. For brevitys sake I'm going to show how to install them with homebrew but obviously install these how you wish.
+
+### Ruby
+[http://www.ruby-lang.org/en/](http://www.ruby-lang.org/en/)
+
+```bash
+brew install ruby
+```
+
+### Compass
+[http://compass-style.org](http://compass-style.org/)
 
 ```bash
 gem update --system
 gem install compass
 ```
 
-* [Node](http://nodejs.org/)
+### Node 
+[http://nodejs.org/](http://nodejs.org/)
 
 ```bash
 brew update && brew install node   
 ```
 
-* [PhantomJS](http://phantomjs.org/)
+### PhantomJS
+[http://phantomjs.org/](http://phantomjs.org/)
 
 ```bash
 brew update && brew install phantomjs
+```
+
+### Testem
+[https://github.com/airportyh/testem](https://github.com/airportyh/testem)
+
+```bash
+npm install -g testem 
 ```
 
 ## Install Towelie
@@ -44,14 +64,15 @@ brew update && brew install phantomjs
 npm install -g towelie 
 ```
 
-## Setup example project template
+## Setup Project
 
 ```bash
-towelie init:towelie-marionette      // install marionette template 
-towelie                              // fire up the project
+mkdir projectName && cd projectName   // create project folder and open it
+towelie init:towelie                  // create project
+towelie                               // fire up server
 ```
 
-# Commands
+## Commands
 
 ```bash
 towelie             // runs server, watcher, coffeescript & sass compiler and tests 

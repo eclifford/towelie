@@ -51,7 +51,7 @@ module.exports = function( grunt ) {
       {% if (coffee) { %}
       coffee: {
         files: '<%= towelie.paths.dev %>/scripts/**/*.coffee',
-        tasks: 'coffee:app testem'
+        tasks: 'coffee:app'
       },
       {% } %}
       {% if (compass) { %}
@@ -67,7 +67,7 @@ module.exports = function( grunt ) {
         files: [
           '<%= towelie.paths.test %>/specs/**/*.coffee'
         ],
-        tasks: 'coffee:tests testem'
+        tasks: 'coffee:tests'
       }
       {% } %}
     },
