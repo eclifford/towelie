@@ -1,0 +1,21 @@
+{
+    "routes": {
+        "/scripts/vendor": "{%= app_dir %}/scripts/vendor",
+        "/scripts": "{%= staging_dir %}/scripts",
+        "/styles": "{%= staging_dir %}/styles",
+        "/specs": "{%= staging_dir %}/specs",
+        "/templates": "{%= app_dir %}/templates"
+    },
+    "launch_in_ci": [
+        "phantomjs"
+    ],
+    "launch_in_dev": [
+        "phantomjs"
+    ],
+    "src_files": [
+        "{%= app_dir %}/templates/**/*.tmpl",
+        "{%= staging_dir %}/scripts/**/*.js",
+        "{%= test_dir %}/specs/**/*.coffee"
+    ],
+    "test_page": "{%= test_dir %}/index.html"
+}

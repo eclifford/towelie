@@ -8,7 +8,7 @@
  */
 
 // Basic template description.
-exports.description = 'towelie marionette';
+exports.description = 'towelie';
 
 // Template-specific notes to be displayed before question prompts.
 exports.notes = '_Project name_ shouldn\'t contain "node" or "js" and should ' +

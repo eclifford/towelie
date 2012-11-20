@@ -17,16 +17,18 @@
   },
   "main": "towelie.js",
   "bin": {
-    "towelie": "bin/towelie"
+    "towelie": "bin/towelie",
+    "testem": "node_modules/testem/testem.js"
   },
   "engines": {
     "node": ">= 0.8.0"
   },
   "dependencies": {
     "jamjs": "~0.2.11",
+    "testem": "~0.2.24",
     "connect": "~2.6.0",
-    "grunt-testem": "~0.2.3",
     "grunt": "~0.3.17",
+    "grunt-testem": "~0.2.3",
     "grunt-requirejs": "~0.2.14",
     "grunt-shell": "~0.1.3",
     "underscore": "~1.4.2",

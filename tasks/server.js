@@ -38,7 +38,7 @@ module.exports = function(grunt) {
     grunt.log.writeln('Starting static web server on ' + options.hostname + ':' + options.port + '.');
 
     connect.apply(null, middleware)
-      .listen(options.port, options.hostname)
+      .listen(options.port)
       .on('error', function(err) {
         if (err.code === 'EADDRINUSE') {
           grunt.fatal('Port ' + options.port + ' is already in use by another process.');
