@@ -5,8 +5,7 @@
     "name": "{%= author_name %}",
     "email": "{%= author_email %}"
   },
-  "jam": {
-    "packageDir": "{%= app_dir %}/scripts/vendor",
-    "baseUrl": "{%= app_dir %}"
+  "volo": {
+    "baseDir": "app/scripts/vendor"
   }
 }

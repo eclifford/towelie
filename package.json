@@ -1,7 +1,7 @@
 {
   "name": "towelie",
   "description": "Never leave home without a Towel",
-  "version": "0.0.25",
+  "version": "0.0.28",
   "homepage": "http://github.com/eclifford/towelie",
   "keywords": [
     "grunt",
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "grunt": "~0.3.17",
-    "grunt-testem": "~0.2.3",
+    "grunt-testem": "~0.2.5",
     "grunt-compass": "~0.3.7",
     "grunt-contrib": "~0.3.0",
     "grunt-volo": "~0.0.1",

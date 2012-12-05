@@ -70,8 +70,8 @@ exports.template = function(grunt, init, done) {
       default: 'Y/n',
     },
     {
-      name: 'jasmine',
-      message: 'Use Jasmine (fallback is Mocha)',
+      name: 'mocha',
+      message: 'Use Mocha? (fallback is Jasmin)',
       default: 'Y/n',
     }
   ], function(err, props) {
@@ -84,8 +84,10 @@ exports.template = function(grunt, init, done) {
     var files = init.filesToCopy(props);
 
     if(!props.require) {
-      delete files['app/scripts/vendor/require.config.js'];
-      delete files['app/scripts/vendor/require.js'];
+      delete files['app/scripts/vendor/require-config.js'];
+      delete files['app/scripts/vendor/require-jquery.js'];
+      delete files['app/scripts/vendor/text.js'];
+      delete files['app/scripts/vendor/json.js'];
     }
 
     if(!props.coffee) {

@@ -1,9 +1,9 @@
 module.exports = function( grunt ) {
 
   // Towelie Tasks
-  grunt.registerTask('build', 'clean:dist {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} copy:dist {%= require ? "requirejs:js requirejs:css" : "" %}');
-  grunt.registerTask('default', 'clean:temp {%= coffee ? "coffee" : "" %} compass connect open-browser watch');
-  grunt.registerTask('test', 'clean:temp {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} testem');
+  grunt.registerTask('build', 'Build site', 'clean:dist {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} copy:dist {%= require ? "requirejs:js requirejs:css" : "" %}');
+  grunt.registerTask('high', 'Activate watchers and server', 'clean:temp {%= coffee ? "coffee" : "" %} compass connect open-browser watch');
+  grunt.registerTask('test', 'Run TAP tests once', 'clean:temp {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} testem');
 
   //
   // Grunt configuration:
@@ -133,13 +133,12 @@ module.exports = function( grunt ) {
         launch_in_ci: [
           "phantomjs"
         ],
-        launch_in_dev: [
-          "phantomjs"
-        ],
         src_files: [
           "app/templates/**/*.tmpl",
-          "temp/scripts/**/*.js",
-          "test/specs/**/*.coffee"
+          "temp/scripts/**/*.js"
+        ],
+        serve_files: [
+          "temp/specs/**/*.js"
         ]
       }
     },
