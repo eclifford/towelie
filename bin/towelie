@@ -1,32 +1,96 @@
 #!/usr/bin/env node
-var fs = require('fs'),
-    exec = require('child_process').exec,
-    join = require('path').join,
-    grunt = require('grunt'),
-    colors = require('colors'),
-    _ = require('underscore'),
-    compiled = _.template( fs.readFileSync( join(__dirname, 'help.txt'), 'utf8' ));
+var grunt = require('grunt');
+var join  = require('path').join;
 
-// load towelie custom tasks
-grunt.npmTasks(join(__dirname, '../'));
+// load towelie
+grunt.npmTasks([
+  "towelie"
+]);
 
-// command line arguments
-var arguments = process.argv.splice(2).join(' ').trim('');
+// Load plugins
+var plugins = [
+  "grunt-contrib/node_modules/grunt-contrib-clean",
+  "grunt-contrib/node_modules/grunt-contrib-coffee",
+  "grunt-contrib/node_modules/grunt-contrib-compress",
+  "grunt-contrib/node_modules/grunt-contrib-copy",
+  "grunt-contrib/node_modules/grunt-contrib-handlebars",
+  "grunt-contrib/node_modules/grunt-contrib-jade",
+  "grunt-contrib/node_modules/grunt-contrib-jst",
+  "grunt-contrib/node_modules/grunt-contrib-less",
+  "grunt-contrib/node_modules/grunt-contrib-mincss",
+  "grunt-contrib/node_modules/grunt-contrib-requirejs",
+  "grunt-contrib/node_modules/grunt-contrib-stylus",
+  "grunt-contrib/node_modules/grunt-contrib-yuidoc",
+  "grunt-testem",
+  "grunt-compass",
+  "grunt-volo"
+];
 
-// Add JAM commands to Towelie
-if(/^install|^remove|^search|^ls|^upgrade/.test(arguments)) {
-  exec(__dirname + '/../node_modules/.bin/jam ' + arguments, function(err, out, code) {
-    if(err) throw err;
-    process.stdout.write(out);
-    process.exit(code);
-    grunt.cli();
+// Let's load all the pass through tasks 
+for (var i = 0; i < plugins.length; i++) {
+  grunt.loadTasks(join(__dirname, '../node_modules/' + plugins[i] + '/tasks'));
+}
+
+// Draw the help screen.
+function displayHelp() {
+  var pkg = require(__dirname + "/../package.json");
+  grunt.log.writeln();
+  grunt.log.writeln(pkg.description);
+  grunt.log.writeln((" " + pkg.name + " ").green.inverse
+    + " Version - " + pkg.version);
+
+  // Borrowed heavily from the Grunt help source.
+  var col1len = 0;
+
+  var opts = Object.keys(grunt.cli.optlist).map(function(long) {
+    var o = grunt.cli.optlist[long];
+    var col1 = '--' + (o.negate ? 'no-' : '') + long + (o.short ? ', -' + o.short : '');
+    col1len = Math.max(col1len, col1.length);
+    return [col1, o.info];
   });
+
+  var widths = [1, col1len, 2, 76 - col1len];
+
+  var gruntTasks = Object.keys(grunt.task._tasks).sort()
+  // var tasksList = Object.keys(grunt.task._tasks).slice(8);
+
+  if (gruntTasks.length) {
+    displayTasks("Towelie", gruntTasks);
+  }
+  
+  // if (gruntTasks.length) {
+  //   displayTasks("Grunt", gruntTasks);
+  // }
+
+  function displayTasks(name, tasksList) {
+    var tasks = tasksList.map(function(name) {
+      col1len = Math.max(col1len, name.length);
+      var info = grunt.task._tasks[name].info;
+
+      return [name, info.blue];
+    });
+
+    grunt.log.header((name + " tasks:").yellow);
+    grunt.log.writeln();
+
+    tasks.forEach(function(a) {
+      grunt.log.writetableln(widths,
+        ['', grunt.utils._.pad(a[0], col1len), '', a[1]]
+      );
+    });
+  }
+
+  grunt.log.writeln();
 }
-// Help commands
-else if(/^help/.test(arguments)) {
-    return console.log(compiled());
-  //cli.tasks = cmds.join(':');
+
+// Immediately display help screen if no arguments.
+if (process.argv.length === 2) {
+  // Initialize task system so that the tasks can be listed.
+  grunt.task.init([], {help: true});
+
+  // Do not proceed further.
+  return displayHelp();
 }
-else {
-  grunt.cli();
-}
+
+// Start grunt
+grunt.cli();
