@@ -69,6 +69,7 @@ exports.template = function(grunt, init, done) {
       message: 'Use Twitter Bootstrap?',
       default: 'Y/n',
     },
+    // Test Framework
     {
       name: 'mocha',
       message: 'Use Mocha? (fallback is Jasmin)',

@@ -2,7 +2,7 @@ module.exports = function( grunt ) {
 
   // Towelie Tasks
   grunt.registerTask('build', 'Build site', 'clean:dist {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} copy:dist {%= require ? "requirejs:js requirejs:css" : "" %}');
-  grunt.registerTask('high', 'Activate watchers and server', 'clean:temp {%= coffee ? "coffee" : "" %} compass connect open-browser watch');
+  grunt.registerTask('run', 'Activate watchers and server', 'clean:temp {%= coffee ? "coffee" : "" %} compass connect open-browser watch');
   grunt.registerTask('test', 'Run TAP tests once', 'clean:temp {%= coffee ? "coffee" : "" %} {%= compass ? "compass" : "" %} testem');
 
   //

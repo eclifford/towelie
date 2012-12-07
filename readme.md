@@ -13,8 +13,6 @@ Towelie is an opinonated modularized development enviroment built around [GruntJ
 * [CoffeeScript](http://coffeescript.org/)
 * [SASS](http://sass-lang.com/)
 * [Compass](http://compass-style.org/)
-* [JAM](http://jamjs.org/)
-* [Backbone Marionette](https://github.com/marionettejs/backbone.marionette)
 
 # Quickstart
 
@@ -68,8 +66,8 @@ npm install -g towelie
 
 ```bash
 mkdir projectName && cd projectName   // create project folder and open it
-towelie init:towelie                  // create project
-towelie                               // fire up server
+towelie init                          // create project
+towelie run                           // fire up server
 ```
 
 ## Commands
@@ -78,10 +76,6 @@ towelie                               // fire up server
 towelie             // runs server, watcher, coffeescript & sass compiler and tests 
 towelie test        // manually runs test suite once
 towelie build       // builds site and places in dist folder
-towelie install *   // executes jam install * to install a clientside library 
-towelie search *    // executes jam search * to search for a clientside library
-towelie list        // lists jam clientside artifacts
-towelie upgrade *   // executes jam upgrade * to upgrade a clientside library
 ```
 
 ## Authors
