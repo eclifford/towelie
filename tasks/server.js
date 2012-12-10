@@ -1,12 +1,25 @@
-var connect = require('connect')
-    path    = require('path')
-    open    = require('open')
-    _       = require('underscore');
+/*
+ * grunt-contrib-connect
+ * http://gruntjs.com/
+ *
+ * Copyright (c) 2012 "Cowboy" Ben Alman, contributors
+ * Licensed under the MIT license.
+ */
+
+'use strict';
 
 module.exports = function(grunt) {
-  grunt.registerTask('connect', 'Start a static web server.', function() {
+
+  // Nodejs libs.
+  var path = require('path');
+
+  // External libs.
+  var connect = require('connect');
+
+  grunt.registerMultiTask('connect', 'Start a connect web server.', function() {
+
     // Merge task-specific options with these defaults.
-    var options = _.defaults(grunt.config('connect'), {
+    var options = this.options({
       port: 8000,
       hostname: 'localhost',
       base: '.',
@@ -14,10 +27,9 @@ module.exports = function(grunt) {
       middleware: function(connect, options) {
         return [
           // Serve static files.
-          connect.static('app'),
-          connect.static('temp'),
+          connect.static(options.base),
           // Make empty directories browsable.
-          connect.directory('app'),
+          connect.directory(options.base),
         ];
       }
     });
@@ -25,7 +37,7 @@ module.exports = function(grunt) {
     // Connect requires the base path to be absolute.
     options.base = path.resolve(options.base);
 
-    var middleware = options.middleware.call(this, connect, options) || [];
+    var middleware = options.middleware ? options.middleware.call(this, connect, options) : [];
 
     // If --debug was specified, enable logging.
     if (grunt.option('debug')) {
@@ -35,7 +47,7 @@ module.exports = function(grunt) {
     }
 
     // Start server.
-    grunt.log.writeln('Starting static web server on ' + options.hostname + ':' + options.port + '.');
+    grunt.log.writeln('Starting connect web server on ' + options.hostname + ':' + options.port + '.');
 
     connect.apply(null, middleware)
       .listen(options.port)
@@ -58,7 +70,4 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.registerTask('open-browser', function() {
-    open('http://' + grunt.config('towelie.server.hostname') + ':' + grunt.config('towelie.server.port'))
-  });
-}
+};
