@@ -15,11 +15,12 @@ module.exports = function(grunt) {
 
   // External libs.
   var connect = require('connect');
+  var _       = require('underscore');
 
   grunt.registerMultiTask('connect', 'Start a connect web server.', function() {
 
     // Merge task-specific options with these defaults.
-    var options = this.options({
+    var options = _.defaults({
       port: 8000,
       hostname: 'localhost',
       base: '.',
