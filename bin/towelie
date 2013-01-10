@@ -23,7 +23,9 @@ var plugins = [
   "grunt-contrib/node_modules/grunt-contrib-yuidoc",
   "grunt-testem",
   "grunt-compass",
-  "grunt-volo"
+  "grunt-volo",
+  "grunt-replace",
+  "grunt-shell"
 ];
 
 // Let's load all the pass through tasks 

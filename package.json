@@ -1,7 +1,7 @@
 {
   "name": "towelie",
   "description": "Never leave home without a Towel",
-  "version": "0.0.31",
+  "version": "0.0.32",
   "homepage": "http://github.com/eclifford/towelie",
   "keywords": [
     "grunt",
@@ -35,7 +35,9 @@
     "open": "~0.0.2",
     "path": "~0.4.9",
     "connect": "~2.6.0",
-    "underscore": "~1.4.3"
+    "underscore": "~1.4.3",
+    "grunt-shell": "~0.1.4",
+    "grunt-replace": "~0.3.2"
   },
   "readme": "Towelie is a taskbased wrapper built on top of Grunt"
 }

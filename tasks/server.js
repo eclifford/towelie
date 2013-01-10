@@ -20,7 +20,7 @@ module.exports = function(grunt) {
   grunt.registerMultiTask('connect', 'Start a connect web server.', function() {
 
     // Merge task-specific options with these defaults.
-    var options = _.defaults({
+    var options = _.defaults(this.data, {
       port: 8000,
       hostname: 'localhost',
       base: '.',
